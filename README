@@ -1,0 +1,9 @@
+A simple, mobile-device-friendly, web-based UI for controlling X10 devices via the CM19A controller.
+
+NOTE: X10 driver only supports Linux.
+
+CREDITS:
+
+* Sinatra web framework (http://www.sinatrarb.com/)
+* Python X10 driver by Michael LeMay (http://m.lemays.org)
+* jQuery/jQuery Mobile JavaScript framework (http://jquery.com/)
