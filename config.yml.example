@@ -1,0 +1,7 @@
+---
+password: somepassword
+devices:
+  - id: a2
+    name: Stereo
+  - id: a1
+    name: Lamp

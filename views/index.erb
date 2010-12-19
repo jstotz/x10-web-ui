@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>X10 Control Panel</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+  <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+  <script type="text/javascript">      
+  $(document).ajaxStart(function() {$.mobile.pageLoading();});
+  $(document).ajaxStop(function() {$.mobile.pageLoading(true);});
+  $(document).ajaxError(function(e, xhr) { alert("Error: " + xhr.responseText)});
+  
+  function sendCommand(command) {
+    $.post('/', {p: "<%=params[:p]%>", c: command});
+  }
+  </script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>X10 Control Panel</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	  <% for device in config["devices"] %>
+    <div data-role="controlgroup" data-type="horizontal">
+      <%= device["name"]%>:
+      <a href="javascript:sendCommand('+<%= device["id"]%>')" data-role="button">On</a>
+      <a href="javascript:sendCommand('-<%= device["id"]%>')" data-role="button">Off</a>
+    </div>
+    <% end %>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+</body>
+</html>
